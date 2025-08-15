@@ -17,10 +17,11 @@ USE master;
 GO
 
 -- Drop and recreate the 'DataWarehouse' database
-IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')  /* The query inside returns True if a database with name DataWarehouse exists*/
 BEGIN
-    ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE DataWarehouse;
+    ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE; /* SET SINGLE_USER WITH ROLLBACK IMMEDIATE means put database in on connection 
+    DROP DATABASE DataWarehouse;                                             at a time mode and If other users or applications are using the database,                                                                             
+                                                                            kick them out immediately and cancel their running queries.*/    
 END;
 GO
 
